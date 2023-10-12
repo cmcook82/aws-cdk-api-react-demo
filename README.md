@@ -46,7 +46,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 - `mkdir .github && cd .github && mkdir workflows && cd workflows && touch main.yml`
 - Paste in basic aws code
 - Add `secrets and variables / actions` into the repo settings: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `AWS_ACCOUNT_ROLE`
-- Get the API url from the output of the `cdk deploy` command, or view in the AWS API Gatewway pages.
+- Get the API url from the output of the `cdk deploy` command, or view in the AWS API Gateway pages.
 - `cdk destroy` to remove the whole stack fromm aws like we were never here
 
 ### Using the data:
@@ -56,8 +56,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 - `cd website`
 - `npm run start`
 - `npm i react-minimal-pie-chart`
-- Open `/src/App.tsx`
-- Open `App.css` and add style
-- Paste in basic demo code and run
-- `nvm use 16` and `npm i` to make sure we're all on the same version of react and update package-lock
-- Craete `components/cake` folder, create `index.ts` and `cake.tsx` file, with fuller demo
+- Open `/src/App.tsx` and update the code
+- Open `App.css` and update the styles
+- Tip: `nvm use 16` and `npm i` to make sure we're all on the same version of react and update package-lock
+- Create `components/cake` folder, create `index.ts` and `cake.tsx` file, with fuller demo
