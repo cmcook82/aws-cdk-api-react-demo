@@ -1,0 +1,59 @@
+name: Deploy Demo API
+
+on:
+  push:
+    branches: [demo]
+  workflow_dispatch:
+jobs:
+  install_and_deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: eu-west-2
+      AWS_ROLE: ${{ secrets.AWS_ACCOUNT_ROLE }}
+
+    steps:
+      - name: Checkout our code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: "https://npm.pkg.github.com"
+
+      - name: Install npm
+        run: npm install -g npm
+
+      - name: Install AWS CDK
+        run: "sudo npm install -g aws-cdk"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install aws cdk lib
+        run: npm install aws-cdk-lib
+
+      - name: Build TS
+        run: npm run build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: ${{ env.AWS_ROLE }}
+          role-duration-seconds: 1200
+          role-skip-session-tagging: true
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Run tests
+        run: npm run test
+
+      - name: CDK Synth
+        run: cdk synth
+
+      - name: CDK deploy
+        run: cdk deploy DemoApiStack --require-approval never
