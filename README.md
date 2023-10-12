@@ -1,6 +1,12 @@
-# Demo Typescript CDK project for creating an API and ReactJS front-end.
+# Demo Typescript CDK project for creating an API and ReactJS project
 
 [Supporting video walk-through](https://www.youtube.com/watch?v=4tl59rHrc6A)
+
+
+## Assumptions 
+
+- That you already have access to an AWS account
+- That you already have an AWS secret key/id to use for the deployment
 
 
 ## Useful commands
