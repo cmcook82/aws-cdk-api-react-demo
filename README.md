@@ -1,8 +1,7 @@
-# Welcome to your CDK TypeScript project
+# Demo Typescript CDK project for creating an API and ReactJS front-end.
 
-This is a blank project for CDK development with TypeScript.
+[Supporting video walk-through](https://www.youtube.com/watch?v=4tl59rHrc6A)
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ## Useful commands
 
@@ -12,6 +11,8 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 - `cdk deploy` deploy this stack to your default AWS account/region
 - `cdk diff` compare deployed stack with current state
 - `cdk synth` emits the synthesized CloudFormation template
+
+The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ---
 
